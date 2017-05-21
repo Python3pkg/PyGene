@@ -272,7 +272,7 @@ class TSPCanvas(Fl_Box):
         # get the cities in order
         order = best.getCitiesInOrder()
     
-        print("best=%s" % fitness)
+        print(("best=%s" % fitness))
     
         # draw the city names
         fl_color(FL_BLACK)

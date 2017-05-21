@@ -174,7 +174,7 @@ def main():
             # and dump it out
             #print [("%.2f %.2f" % (o['x1'], o['x2'])) for o in pop.organisms]
             best = pop.organisms[0]
-            print("fitness=%s" % (best.fitness(),))
+            print(("fitness=%s" % (best.fitness(),)))
 
     except KeyboardInterrupt:
         pass

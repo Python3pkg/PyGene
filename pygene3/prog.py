@@ -101,7 +101,7 @@ class FuncNode(BaseNode):
         #    args
         #    )
         if self.argtype:
-            for i, pair in enumerate(zip(self.argtype, self.children)):
+            for i, pair in enumerate(list(zip(self.argtype, self.children))):
                 argtype, child = pair
                 if argtype != child.type:
                     msg = (
@@ -111,7 +111,7 @@ class FuncNode(BaseNode):
                         "  Expected %s found %s (%s) for function argument %d\n"
                         "  Tree:"
                     )
-                    print(msg % (self.name, args, argtype, child.name, child.type, i + 1))
+                    print((msg % (self.name, args, argtype, child.name, child.type, i + 1)))
                     self.org.tree.dump(1)
                     print()
                     raise TypeError
@@ -125,7 +125,7 @@ class FuncNode(BaseNode):
                 "Genetical programming type error:\n"
                 "  Function '%s' returned %s (%r) instead of type %r\n"
             )
-            print(msg % (self.name, t, type(t), self.type))
+            print((msg % (self.name, t, type(t), self.type)))
             self.org.tree.dump(1)
             print()
             raise TypeError
@@ -135,7 +135,7 @@ class FuncNode(BaseNode):
     def dump(self, level=0):
         indents = "  " * level
         #print indents + "func:" + self.name
-        print("%s%s" % (indents, self.name))
+        print(("%s%s" % (indents, self.name)))
         for child in self.children:
             child.dump(level+1)
 
@@ -154,10 +154,10 @@ class FuncNode(BaseNode):
                     "  children: %r\n"
                     "  child types: %r\n"
                 )
-                print(msg % (self.name,
+                print((msg % (self.name,
                              self.argtype,
                              self.children,
-                             [c.type for c in self.children]))
+                             [c.type for c in self.children])))
                 self.org.tree.dump(1)
                 print()
                 raise TypeError
@@ -286,7 +286,7 @@ class ConstNode(TerminalNode):
     def dump(self, level=0):
         indents = "  " * level
         #print "%sconst: {%s}" % (indents, self.value)
-        print("%s{%s}" % (indents, self.value))
+        print(("%s{%s}" % (indents, self.value)))
 
     def copy(self):
         """
@@ -335,7 +335,7 @@ class VarNode(TerminalNode):
 
         indents = "  " * level
         #print indents + "var {" + self.name + "}"
-        print("%s{%s}" % (indents, self.name))
+        print(("%s{%s}" % (indents, self.name)))
 
     def copy(self):
         """
@@ -429,7 +429,7 @@ class ProgOrganism(BaseOrganism, metaclass=ProgOrganismMetaclass):
             tries += 1
 
             if tries > 20:
-                print("Warning: Failed to swap trees for", tries, "times. Continuing...")
+                print(("Warning: Failed to swap trees for", tries, "times. Continuing..."))
                 return self.copy(), mate.copy()
 
             # Get copied trees
@@ -492,7 +492,7 @@ class ProgOrganism(BaseOrganism, metaclass=ProgOrganismMetaclass):
         try:
             return self.__class__(self.tree.copy())
         except:
-            print("self.__class__ = %s" % self.__class__)
+            print(("self.__class__ = %s" % self.__class__))
             raise
 
     def dump(self, node=None, level=1):

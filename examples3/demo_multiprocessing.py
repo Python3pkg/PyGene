@@ -106,8 +106,8 @@ def main(nfittest=10, nkids=100):
     i = 0
     while True:
         b = ph.best()
-        print("generation %s: %s best=%s average=%s)" % (
-            i, repr(b), b.get_fitness(), ph.fitness()))
+        print(("generation %s: %s best=%s average=%s)" % (
+            i, repr(b), b.get_fitness(), ph.fitness())))
         if b.get_fitness() <= 0:
             print("cracked!")
             break

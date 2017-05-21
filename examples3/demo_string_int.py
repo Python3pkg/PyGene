@@ -94,8 +94,8 @@ def main():
     i = 0
     while True:
         b = world.best()
-        print("generation %s: %s best=%s average=%s)" % (
-            i, repr(b), b.get_fitness(), world.fitness()))
+        print(("generation %s: %s best=%s average=%s)" % (
+            i, repr(b), b.get_fitness(), world.fitness())))
         if b.get_fitness() <= 0:
             print("cracked!")
             break

@@ -223,7 +223,7 @@ def main():
 
     try:
         while True:
-            print("gen=%s best=%s avg=%s" % (i, pop.best().get_fitness(), pop.fitness()))
+            print(("gen=%s best=%s avg=%s" % (i, pop.best().get_fitness(), pop.fitness())))
             pop.gen()
             i += 1
     except KeyboardInterrupt:
@@ -235,10 +235,10 @@ def main():
 
     # and print out the itinerary
     sortedCities = solution.getCitiesInOrder()
-    print("Best solution: total distance %04.2f in %.3f seconds:" % (
-        solution.fitness(), time() - s))
+    print(("Best solution: total distance %04.2f in %.3f seconds:" % (
+        solution.fitness(), time() - s)))
     for city in sortedCities:
-        print("  x=%03.2f y=%03.2f %s" % (city.x, city.y, city.name))
+        print(("  x=%03.2f y=%03.2f %s" % (city.x, city.y, city.name)))
 
 if __name__ == '__main__':
     main()

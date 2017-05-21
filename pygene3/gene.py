@@ -659,7 +659,7 @@ def _new_factory(cls):
     "Creates gene factories"
     def factory(name, **kw):
         "Gene factory"
-        for key in kw.keys():
+        for key in list(kw.keys()):
             if key not in cls.fields:
                 raise Exception("Tried to create a gene with an invalid field: " + key)
         # return new.classobj(name, (cls,), kw)
